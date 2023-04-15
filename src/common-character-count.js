@@ -16,14 +16,12 @@ function getCommonCharacterCount(s1, s2) {
   for (let i = 0; i < s1.length; i++) {
     if (s2.includes(s1[i])) {
       count++;
-      console.log(s2.replace(s1[i], ''));
       s2 = s2.replace(s1[i], '');
     }
   }
   return count;
 }
 
-getCommonCharacterCount("aabcc", "adcaa");
 
 module.exports = {
   getCommonCharacterCount
