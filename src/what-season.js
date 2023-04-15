@@ -17,18 +17,22 @@ function getSeason(date) {
   }
 
   const month = date.getMonth();
-  if (month >= 3 && month <= 5) {
+  console.log(month);
+  if (month >= 0 && month <= 1 || month === 11) {
+    return 'winter';
+  } else if (month >= 3 && month <= 5) {
     return 'spring';
   } else if (month >= 6 && month <= 8) {
     return 'summer';
   } else if (month >= 9 && month <= 11) {
     return 'autumn';
-  } else if (month >= 0 && month <= 1 || month === 11) {
-    return 'winter';
   } else {
     throw new Error('Invalid date!');
   }
 }
+
+getSeason(new Date(2020, 2, 31));
+
 module.exports = {
   getSeason
 };
