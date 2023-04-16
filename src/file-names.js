@@ -34,7 +34,7 @@ function renameFiles(names) {
   return newNames;
 }
 
-renameFiles(["file", "file", "image", "file(1)", "file"]);
+//renameFiles(["file", "file", "image", "file(1)", "file"]);
 
 module.exports = {
   renameFiles
