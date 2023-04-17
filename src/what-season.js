@@ -12,27 +12,33 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  throw new NotImplementedError('Not implemented');
-  // if (!date || isNaN(date)) {
-  //   return 'Unable to determine the time of year!';
-  // }
-
-  // const month = date.getMonth();
-  // console.log(month);
-  // if (month >= 0 && month <= 1 || month === 11) {
-  //   return 'winter';
-  // } else if (month >= 3 && month <= 5) {
-  //   return 'spring';
-  // } else if (month >= 6 && month <= 8) {
-  //   return 'summer';
-  // } else if (month >= 9 && month <= 11) {
-  //   return 'autumn';
-  // } else {
-  //   throw new Error('Invalid date!');
-  // }
+  if (Object.prototype.toString.call(date) !== '[object Date]' || Object.keys(date).length !== Object.keys(new Date()).length || date.getTime() !== new Date(date.getTime()).getTime()) {
+    throw new Error('Invalid date!');
+  }
+  
+  const month = date.getMonth();
+  switch (month) {
+    case 11:
+    case 0:
+    case 1:
+      return 'winter';
+    case 2:
+    case 3:
+    case 4:
+      return 'spring';
+    case 5:
+    case 6:
+    case 7:
+      return 'summer';
+    case 8:
+    case 9:
+    case 10:
+      return 'autumn';
+    default:
+      throw new Error('Unable to determine the time of year!');
+  }
 }
 
-//getSeason(new Date(2020, 2, 31));
 
 module.exports = {
   getSeason
